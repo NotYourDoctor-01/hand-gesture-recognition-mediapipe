@@ -1,0 +1,13 @@
+services:
+  train:
+    build: .
+    volumes:
+      - .:/app
+      - ./data:/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
